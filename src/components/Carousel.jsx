@@ -1,10 +1,9 @@
-import { useState, useRef, useEffect } from "react";
+import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const Carousel = ({ images }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState(null);
-  const elementRef = useRef();
 
   const slideVariants = {
     hiddenRight: {
@@ -151,26 +150,6 @@ const Carousel = ({ images }) => {
           ></motion.div>
         ))}
       </div>
-    </div>
-  );
-
-  return (
-    <div style={{ "object-fit": "contain" }}>
-      <div className="carousel-images">
-        <AnimatePresence>
-          <motion.img
-            key={currentIndex}
-            src={images[currentIndex]}
-            initial={direction === "right" ? "hiddenRight" : "hiddenLeft"}
-            animate="visible"
-            exit="exit"
-            variants={slideVariants}
-            style={{ "object-fit": "contain" }}
-          />
-        </AnimatePresence>
-        <div className="slide_direction"></div>
-      </div>
-      <div className="carousel-indicator"></div>
     </div>
   );
 };
